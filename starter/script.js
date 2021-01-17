@@ -20,6 +20,7 @@ const dice = document.querySelector('.dice');
 let score = 0;
 let currentScore = 0;
 let currentPlayer = 0;
+let totalScore = [0, 0];
 
 ////////////RESET THE GAME
 const init = () => {
@@ -63,4 +64,12 @@ btnRoll.addEventListener('click', () => {
   } else {
     switchPlayer();
   }
+});
+
+////////////HOLD SCORE
+btnHold.addEventListener('click', () => {
+  // 1. add current score to total score if totalscore is <= 100
+  totalScore[`${currentPlayer}`] += currentScore;
+  document.getElementById(`score--${currentPlayer}`).textContent =
+    totalScore[`${currentPlayer}`];
 });
