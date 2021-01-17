@@ -12,3 +12,6 @@ const score0 = document.getElementById('score--0');
 const score1 = document.getElementById('score--1');
 const current0 = document.getElementById('current--0');
 const current1 = document.getElementById('current--1');
+
+//dice
+const dice = document.querySelector('.dice');
