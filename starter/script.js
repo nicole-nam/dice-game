@@ -72,4 +72,6 @@ btnHold.addEventListener('click', () => {
   totalScore[`${currentPlayer}`] += currentScore;
   document.getElementById(`score--${currentPlayer}`).textContent =
     totalScore[`${currentPlayer}`];
+  // 2. switch player
+  switchPlayer();
 });
