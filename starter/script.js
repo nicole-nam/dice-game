@@ -4,8 +4,11 @@
 
 //buttons
 const btnNew = document.querySelector('.btn--new');
-console.log(btnNew);
 const btnRoll = document.querySelector('.btn--roll');
-console.log(btnNew);
 const btnHold = document.querySelector('.btn--hold');
-console.log(btnNew);
+
+//scores
+const score0 = document.getElementById('score--0');
+const score1 = document.getElementById('score--1');
+const current0 = document.getElementById('current--0');
+const current1 = document.getElementById('current--1');
