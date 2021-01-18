@@ -17,13 +17,15 @@ const player1 = document.querySelector('.player--1');
 //dice
 const dice = document.querySelector('.dice');
 //score
-let score = 0;
-let currentScore = 0;
-let currentPlayer = 0;
-let totalScore = [0, 0];
+let score, currentScore, currentPlayer, totalScore, playing;
 
 ////////////RESET THE GAME
 const init = () => {
+  score = 0;
+  currentScore = 0;
+  currentPlayer = 0;
+  totalScore = [0, 0];
+  playing = true;
   // 1. remove the dice image
   dice.classList.add('hidden');
   // 2. set all scores to 0
@@ -73,7 +75,7 @@ btnHold.addEventListener('click', () => {
   document.getElementById(`score--${currentPlayer}`).textContent =
     totalScore[currentPlayer];
 
-  if (totalScore[currentPlayer] >= 10) {
+  if (totalScore[currentPlayer] >= 100) {
     console.log(currentPlayer);
     // 1. remove dice
     dice.classList.add('hidden');
