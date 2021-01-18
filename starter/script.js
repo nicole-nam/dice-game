@@ -69,9 +69,25 @@ btnRoll.addEventListener('click', () => {
 ////////////HOLD SCORE
 btnHold.addEventListener('click', () => {
   // 1. add current score to total score if totalscore is <= 100
-  totalScore[`${currentPlayer}`] += currentScore;
+  totalScore[currentPlayer] += currentScore;
   document.getElementById(`score--${currentPlayer}`).textContent =
-    totalScore[`${currentPlayer}`];
-  // 2. switch player
-  switchPlayer();
+    totalScore[currentPlayer];
+
+  if (totalScore[currentPlayer] >= 10) {
+    console.log(currentPlayer);
+    // 1. remove dice
+    dice.classList.add('hidden');
+    // 2. add winner background
+    document
+      .querySelector(`.player--${currentPlayer}`)
+      .classList.add('player--winner');
+    // 3. remove current player background
+    document
+      .querySelector(`.player--${currentPlayer}`)
+      .classList.remove('player--active');
+  } else {
+    switchPlayer();
+  }
 });
+
+// console.log(totalScore);
