@@ -78,7 +78,7 @@ btnHold.addEventListener('click', () => {
     document.getElementById(`score--${currentPlayer}`).textContent =
       totalScore[currentPlayer];
 
-    if (totalScore[currentPlayer] >= 10) {
+    if (totalScore[currentPlayer] >= 100) {
       playing = false;
       console.log(currentPlayer);
       // 1. remove dice
@@ -96,3 +96,6 @@ btnHold.addEventListener('click', () => {
     }
   }
 });
+
+////////////start new game
+btnNew.addEventListener('click',init);
