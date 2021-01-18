@@ -50,46 +50,49 @@ const switchPlayer = () => {
 
 ////////////ROLL DICE
 btnRoll.addEventListener('click', () => {
-  // 1. generate random number
-  const randomNum = Math.trunc(Math.random() * 6 + 1);
-  console.log(randomNum);
-  // 2. change the dice image showing randomly generated number
-  dice.classList.remove('hidden');
-  dice.src = `dice-${randomNum}.png`;
-  // 3. add random number to the current number and show it
-  // if randomNum is 1 switch player
-  if (randomNum !== 1) {
-    currentScore += randomNum;
-    document.getElementById(
-      `current--${currentPlayer}`
-    ).textContent = currentScore;
-  } else {
-    switchPlayer();
+  if (playing) {
+    // 1. generate random number
+    const randomNum = Math.trunc(Math.random() * 6 + 1);
+    console.log(randomNum);
+    // 2. change the dice image showing randomly generated number
+    dice.classList.remove('hidden');
+    dice.src = `dice-${randomNum}.png`;
+    // 3. add random number to the current number and show it
+    // if randomNum is 1 switch player
+    if (randomNum !== 1) {
+      currentScore += randomNum;
+      document.getElementById(
+        `current--${currentPlayer}`
+      ).textContent = currentScore;
+    } else {
+      switchPlayer();
+    }
   }
 });
 
 ////////////HOLD SCORE
 btnHold.addEventListener('click', () => {
-  // 1. add current score to total score if totalscore is <= 100
-  totalScore[currentPlayer] += currentScore;
-  document.getElementById(`score--${currentPlayer}`).textContent =
-    totalScore[currentPlayer];
+  if (playing) {
+    // 1. add current score to total score if totalscore is <= 100
+    totalScore[currentPlayer] += currentScore;
+    document.getElementById(`score--${currentPlayer}`).textContent =
+      totalScore[currentPlayer];
 
-  if (totalScore[currentPlayer] >= 100) {
-    console.log(currentPlayer);
-    // 1. remove dice
-    dice.classList.add('hidden');
-    // 2. add winner background
-    document
-      .querySelector(`.player--${currentPlayer}`)
-      .classList.add('player--winner');
-    // 3. remove current player background
-    document
-      .querySelector(`.player--${currentPlayer}`)
-      .classList.remove('player--active');
-  } else {
-    switchPlayer();
+    if (totalScore[currentPlayer] >= 10) {
+      playing = false;
+      console.log(currentPlayer);
+      // 1. remove dice
+      dice.classList.add('hidden');
+      // 2. add winner background
+      document
+        .querySelector(`.player--${currentPlayer}`)
+        .classList.add('player--winner');
+      // 3. remove current player background
+      document
+        .querySelector(`.player--${currentPlayer}`)
+        .classList.remove('player--active');
+    } else {
+      switchPlayer();
+    }
   }
 });
-
-// console.log(totalScore);
